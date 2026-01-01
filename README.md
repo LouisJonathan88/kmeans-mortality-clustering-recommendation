@@ -11,7 +11,7 @@ Dataset yang digunakan berasal dari **Open Data Jawa Barat**.
 ## 🚀 Cara Menjalankan Aplikasi
 1. Clone repository:
    ```bash
-   git clone https://github.com/<username>/kmeans-mortality-clustering-recommendation.git
+   git clone https://github.com/LouisJonathan88/kmeans-mortality-clustering-recommendation.git
 
    cd kmeans-mortality-clustering-recommendation
     ```
