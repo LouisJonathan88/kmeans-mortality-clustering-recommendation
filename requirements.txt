@@ -1,0 +1,4 @@
+# Requirements for the project
+- Streamlit
+- Pandas
+- Scikit-learn
