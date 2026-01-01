@@ -82,19 +82,38 @@ if df is not None:
                 color='Jumlah Kematian',
                 color_continuous_scale=color_scale
             )
-            fig.update_layout(yaxis={'categoryorder':'total ascending'})
-            st.plotly_chart(fig, use_container_width=True)
+            fig.update_layout(
+                yaxis={'categoryorder':'total ascending'},
+                coloraxis_showscale=False
+            )
+            st.plotly_chart(
+                fig,
+                use_container_width=True,
+                config={
+                    "displayModeBar": False,   
+                    "scrollZoom": False       
+                }
+            )
 
         with col2:
             st.subheader("Detail Cluster")
-            # Daftar Penyebab Kematian
             st.write("**Penyebab Kematian dalam Cluster ini:**")
-            tabel_penyebab = hasil.reset_index()[['penyebab_kematian']].rename(columns={'penyebab_kematian': 'Penyebab Kematian'})
-            st.dataframe(tabel_penyebab, use_container_width=True, height=200)
-            
-            # Tabel Angka
-            st.write("**Tabel 5 Wilayah Teratas:**")
-            st.table(tabel_kabupaten)
+
+            # Hitung total kematian per penyebab
+            penyebab_sum = hasil.drop(columns=['cluster', 'cluster_label']).sum(axis=1)
+
+            tabel_penyebab = (
+                penyebab_sum[penyebab_sum > 0]
+                .sort_values(ascending=False)
+                .reset_index()
+                .rename(columns={
+                    'penyebab_kematian': 'Penyebab Kematian',
+                    0: 'Jumlah Kematian'
+                })
+            )
+
+            st.dataframe(tabel_penyebab, use_container_width=True)
+
 
         # ================= REKOMENDASI =================
         st.markdown("---")
