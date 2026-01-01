@@ -113,7 +113,9 @@ if df is not None:
             )
 
             st.dataframe(tabel_penyebab, use_container_width=True)
-
+            # Tabel Angka
+            st.write("**Tabel 5 Wilayah Teratas:**")
+            st.table(tabel_kabupaten)
 
         # ================= REKOMENDASI =================
         st.markdown("---")
