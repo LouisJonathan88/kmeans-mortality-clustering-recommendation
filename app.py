@@ -76,9 +76,9 @@ if df is not None:
             # Grafik Bar Plotly
             fig = px.bar(
                 tabel_kabupaten, 
-                x='Jumlah Kematian', 
-                y='Nama Kabupaten/Kota',
-                orientation='h',
+                y='Jumlah Kematian', 
+                x='Nama Kabupaten/Kota',
+                orientation='v',
                 color='Jumlah Kematian',
                 color_continuous_scale=color_scale
             )
@@ -114,7 +114,7 @@ if df is not None:
 
             st.dataframe(tabel_penyebab, use_container_width=True)
             # Tabel Angka
-            st.write("**Tabel 5 Wilayah Teratas:**")
+            st.write("**5 Wilayah Teratas:**")
             st.table(tabel_kabupaten)
 
         # ================= REKOMENDASI =================
