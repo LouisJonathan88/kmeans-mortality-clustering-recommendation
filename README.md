@@ -23,11 +23,3 @@ Dataset yang digunakan berasal dari **Open Data Jawa Barat**.
     ```bash
      streamlit run app.py
      ```
-## 📋 Requirements
-- Python 3.8+
-- Streamlit
-- Pandas
-- NumPy
-- Scikit-learn
-- Matplotlib
-- Seaborn
