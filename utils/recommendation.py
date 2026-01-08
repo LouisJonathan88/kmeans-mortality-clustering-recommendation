@@ -1,24 +1,20 @@
 def get_recommendation(jenis_kematian, cluster_label):
     data_rekomendasi = {
         "KEMATIAN BALITA": {
-            "Risiko Tinggi": "⚠️ PERINGATAN: Peningkatan imunisasi, pemantauan gizi balita, serta perbaikan sanitasi lingkungan.",
-            "Risiko Sedang": "ℹ️ INFO: Edukasi orang tua dan pencegahan penyakit menular.",
-            "Risiko Rendah": "✅ AMAN: Monitoring kesehatan balita secara berkala."
+            "Risiko Tinggi": "⚠️ PERINGATAN: Diperlukan peningkatan upaya pencegahan secara komprehensif melalui penguatan program imunisasi dasar lengkap, pemantauan status gizi balita secara berkala, serta perbaikan sanitasi dan kebersihan lingkungan. Dominasi kategori lain-lain menunjukkan perlunya pendekatan preventif menyeluruh untuk menekan berbagai faktor risiko yang tidak terklasifikasi secara spesifik.",
+            "Risiko Rendah": "✅ AMAN: Pemantauan kesehatan balita secara berkala tetap perlu dilakukan, khususnya melalui deteksi dini penyakit infeksi seperti pneumonia dan diare, pemantauan pertumbuhan, serta pemeliharaan cakupan imunisasi. Langkah ini bertujuan menjaga kondisi kesehatan balita agar tetap terkendali dan mencegah peningkatan risiko kematian."
         },
         "KEMATIAN IBU": {
-            "Risiko Tinggi": "⚠️ PERINGATAN: Peningkatan layanan ANC (Antenatal Care/Pemeriksaan Kehamilan), persalinan oleh tenaga medis, dan rujukan cepat.",
-            "Risiko Sedang": "ℹ️ INFO: Pemeriksaan kehamilan rutin dan edukasi kesehatan ibu.",
-            "Risiko Rendah": "✅ AMAN: Pemantauan dan edukasi lanjutan."
+            "Risiko Tinggi": "⚠️ PERINGATAN: Diperlukan penguatan layanan antenatal care (ANC) secara intensif, khususnya untuk deteksi dan pengelolaan hipertensi serta pencegahan komplikasi pendarahan. Selain itu, persalinan harus ditangani oleh tenaga kesehatan terlatih dengan sistem rujukan yang cepat dan efektif guna menekan risiko kematian ibu.",
+            "Risiko Rendah": "✅ AMAN: Pemantauan kesehatan ibu secara berkelanjutan serta edukasi terkait kondisi medis seperti gangguan darah dan metabolik tetap diperlukan. Upaya ini mencakup skrining rutin, pengendalian penyakit penyerta, serta peningkatan kesadaran ibu terhadap tanda bahaya selama kehamilan."
         },
         "KEMATIAN POST-NEO": {
-            "Risiko Tinggi": "⚠️ PERINGATAN: Perawatan neonatal intensif dan deteksi dini komplikasi.",
-            "Risiko Sedang": "ℹ️ INFO: Peningkatan pemantauan bayi baru lahir.",
-            "Risiko Rendah": "✅ AMAN: Monitoring rutin layanan neonatal."
+            "Risiko Tinggi": "⚠️ PERINGATAN: Diperlukan perawatan neonatal yang lebih intensif melalui pemantauan kondisi bayi baru lahir, peningkatan kualitas layanan kesehatan neonatal, serta deteksi dini terhadap komplikasi pasca-kelahiran. Dominasi penyebab lain-lain menunjukkan perlunya pendekatan komprehensif dalam perawatan neonatal.",
+            "Risiko Rendah": "✅ AMAN: Monitoring rutin layanan neonatal tetap perlu dilakukan, terutama untuk mendeteksi dan menangani penyakit infeksi serta gangguan pencernaan sejak dini. Pemantauan ini bertujuan menjaga stabilitas kondisi kesehatan bayi pasca-neonatal."
         },
         "LAHIR MATI": {
-            "Risiko Tinggi": "⚠️ PERINGATAN: Peningkatan kualitas layanan antenatal dan persalinan.",
-            "Risiko Sedang": "ℹ️ INFO: Deteksi dini risiko kehamilan.",
-            "Risiko Rendah": "✅ AMAN: Pemantauan kehamilan rutin."
+            "Risiko Tinggi": "⚠️ PERINGATAN: Peningkatan kualitas layanan antenatal dan persalinan sangat diperlukan, khususnya dalam pemantauan pertumbuhan janin, pencegahan berat badan lahir rendah, serta penanganan asfiksia saat persalinan. Kesiapan fasilitas dan tenaga kesehatan menjadi faktor kunci dalam menurunkan risiko lahir mati.",
+            "Risiko Rendah": "✅ AMAN: Pemantauan kehamilan rutin melalui layanan antenatal care tetap diperlukan, termasuk skrining kelainan janin, pencegahan infeksi maternal, serta pemenuhan imunisasi ibu hamil. Langkah ini bertujuan menjaga kondisi kehamilan tetap stabil dan mencegah komplikasi yang berpotensi menyebabkan lahir mati."
         }
     }
 

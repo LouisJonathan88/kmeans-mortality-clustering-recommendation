@@ -16,7 +16,6 @@ st.markdown("---")
 @st.cache_data
 def load_data():
     try:
-        # Ganti sesuai path file Anda
         return pd.read_csv("data/penyebab_kematian_jabar.csv")
     except Exception as e:
         st.error(f"Gagal memuat data: {e}")
@@ -51,7 +50,7 @@ if df is not None:
         # ================= PILIH CLUSTER =================
         cluster_pilihan = st.sidebar.selectbox(
             "Pilih Cluster Risiko untuk Lihat Rekomendasi",
-            ["Risiko Tinggi", "Risiko Sedang", "Risiko Rendah"]
+            ["Risiko Tinggi", "Risiko Rendah"]
         )
 
         hasil = pivot[pivot['cluster_label'] == cluster_pilihan]
@@ -61,45 +60,29 @@ if df is not None:
 
         with col1:
             st.subheader(f"Visualisasi Wilayah: {cluster_pilihan}")
-            
-            # Hitung Kabupaten Dominan
+
             kab_sum = hasil.drop(columns=['cluster', 'cluster_label']).sum()
             top_kab = kab_sum.sort_values(ascending=False).head(5)
-            
+
             tabel_kabupaten = top_kab.reset_index()
             tabel_kabupaten.columns = ['Nama Kabupaten/Kota', 'Jumlah Kematian']
 
-            # Logika Warna Grafik
-            color_scale = "Reds" if cluster_pilihan == "Risiko Tinggi" else \
-                          "Blues" if cluster_pilihan == "Risiko Sedang" else "Greens"
+            color_scale = "Reds" if cluster_pilihan == "Risiko Tinggi" else "Greens"
 
-            # Grafik Bar Plotly
             fig = px.bar(
-                tabel_kabupaten, 
-                y='Jumlah Kematian', 
+                tabel_kabupaten,
                 x='Nama Kabupaten/Kota',
-                orientation='v',
+                y='Jumlah Kematian',
                 color='Jumlah Kematian',
                 color_continuous_scale=color_scale
             )
-            fig.update_layout(
-                yaxis={'categoryorder':'total ascending'},
-                coloraxis_showscale=False
-            )
-            st.plotly_chart(
-                fig,
-                use_container_width=True,
-                config={
-                    "displayModeBar": False,   
-                    "scrollZoom": False       
-                }
-            )
+            fig.update_layout(coloraxis_showscale=False)
+
+            st.plotly_chart(fig, use_container_width=True)
 
         with col2:
             st.subheader("Detail Cluster")
-            st.write("**Penyebab Kematian dalam Cluster ini:**")
 
-            # Hitung total kematian per penyebab
             penyebab_sum = hasil.drop(columns=['cluster', 'cluster_label']).sum(axis=1)
 
             tabel_penyebab = (
@@ -113,23 +96,19 @@ if df is not None:
             )
 
             st.dataframe(tabel_penyebab, use_container_width=True)
-            # Tabel Angka
             st.write("**5 Wilayah Teratas:**")
             st.table(tabel_kabupaten)
 
         # ================= REKOMENDASI =================
         st.markdown("---")
         rekomendasi = get_recommendation(jenis_kematian, cluster_pilihan)
-        
+
         st.write("### 💡 Rekomendasi Pencegahan")
-        
-        # Logika Warna Box Rekomendasi
+
         if cluster_pilihan == "Risiko Tinggi":
-            st.error(rekomendasi)   # Warna Merah
-        elif cluster_pilihan == "Risiko Sedang":
-            st.info(rekomendasi)    # Warna Biru
+            st.error(rekomendasi)
         else:
-            st.success(rekomendasi) # Warna Hijau
-            
+            st.success(rekomendasi)
+
     else:
         st.warning("Data tidak tersedia untuk filter tersebut.")
